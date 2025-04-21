@@ -1,6 +1,7 @@
 let playerScore = 0;
 let computerScore = 0;
 let round = 0;
+const targetScore = 5;
 const playerChoices = document.querySelector('#playerChoices');
 const roundDisplay = document.querySelector('#round span');
 const computerChoiceDisplay = document.querySelector('#computerChoice span');
@@ -40,21 +41,21 @@ function playRound(playerChoice) {
     let computerChoice = getComputerChoice();
 
 
-    if ((computerChoice == "rock" && playerChoice == "scissors")
+    if ((computerChoice === "rock" && playerChoice === "scissors")
         ||
-        (computerChoice == "scissors" && playerChoice == "paper")
+        (computerChoice === "scissors" && playerChoice === "paper")
         ||
-        (computerChoice == "paper" && playerChoice == "rock")
+        (computerChoice === "paper" && playerChoice === "rock")
     ) {
         computerScore = computerScore + 1;
         computerScoreDisplay.innerText = `${computerScore}`;
         roundWinnerDisplay.innerText = 'The computer won that round';
     } else if (
-        (playerChoice == "rock" && computerChoice == "scissors")
+        (playerChoice === "rock" && computerChoice === "scissors")
         ||
-        (playerChoice == "scissors" && computerChoice == "paper")
+        (playerChoice === "scissors" && computerChoice === "paper")
         ||
-        (playerChoice == "paper" && computerChoice == "rock")
+        (playerChoice === "paper" && computerChoice === "rock")
     ) {
         playerScore = playerScore + 1;
         playerScoreDisplay.innerText = `${playerScore}`;
@@ -91,12 +92,12 @@ function playGame() {
 
         
 
-        if (playerScore == 5) {
+        if (playerScore === targetScore) {
 
             alert('You won!');
             resetGame();
 
-        } else if (computerScore == 5) {
+        } else if (computerScore === targetScore) {
     
             alert('You lost!');
             resetGame();
