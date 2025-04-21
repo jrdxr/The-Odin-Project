@@ -1,7 +1,7 @@
 let playerScore = 0;
 let computerScore = 0;
 let round = 0;
-const targetScore = 5;
+const targetScore = 1;
 const playerChoices = document.querySelector('#playerChoices');
 const roundDisplay = document.querySelector('#round span');
 const computerChoiceDisplay = document.querySelector('#computerChoice span');
@@ -95,12 +95,12 @@ function playGame() {
         if (playerScore === targetScore) {
 
             alert('You won!');
-            resetGame();
+            gameOver();
 
         } else if (computerScore === targetScore) {
     
             alert('You lost!');
-            resetGame();
+            gameOver();
 
         } else {
             playRound(playerChoice);
@@ -108,6 +108,20 @@ function playGame() {
     });
 
 
+}
+
+function gameOver() {
+
+    const gameOverDisplay = document.createElement('div');
+    gameOverDisplay.innerHTML = "<button id='playAgain'>Play again?</button>";
+
+
+    document.querySelector('section').appendChild(gameOverDisplay);
+
+    gameOverDisplay.addEventListener('click', (e) => {
+        gameOverDisplay.remove();
+        resetGame();
+    });
 }
 
 function resetGame() {
@@ -122,5 +136,6 @@ function resetGame() {
     roundWinnerDisplay.innerText = ''; 
 
 }
+
 
 playGame();
